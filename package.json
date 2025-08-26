@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "Production-ready Node.js + Express + MongoDB API for device issue reports",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "server": "nodemon index.js",
-    "samrat": "npm run dev --prefix ./samrat",
-    "build": "npm run build --prefix ./samrat",
-    "dev": "concurrently \"npm run start\" \"npm run samrat\"",
-    "test": "jest"
-  },
+ "scripts": {
+  "start": "node index.js",
+  "server": "nodemon index.js",
+  "client": "npm run dev --prefix samrat",
+  "build": "npm run build --prefix samrat",
+  "heroku-postbuild": "npm run build", 
+  "dev": "concurrently \"npm run server\" \"npm run client\"",
+  "test": "jest"
+},
   "keywords": [
     "nodejs",
     "express",
@@ -37,3 +38,4 @@
     "node": ">=16.0.0"
   }
 }
+
