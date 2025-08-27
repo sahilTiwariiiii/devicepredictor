@@ -18,10 +18,12 @@ router.get("/reports", getDeviceReports);
 // GET /api/devices/reports/:id - Get specific device report
 router.get("/reports/:id", getDeviceReportById);
 
-// PUT /api/devices/reports/:id - Update device report
-router.put("/reports/:id", updateDeviceReport);
 
-// DELETE /api/devices/reports/:id - Delete device report
-router.delete("/reports/:id", deleteDeviceReport);
+const auth = require("../middleware/auth");
+// PUT /api/devices/reports/:id - Update device report (admin only)
+router.put("/reports/:id", auth, updateDeviceReport);
+
+// DELETE /api/devices/reports/:id - Delete device report (admin only)
+router.delete("/reports/:id", auth, deleteDeviceReport);
 
 module.exports = router;

@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const deviceRoutes = require("./routes/devices")
+const authRoutes = require("./routes/auth")
 const errorHandler = require("./middleware/errorHandler")
 const path=require('path')
 const dotenv = require("dotenv")
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname,'./samrat/dist')))
 // Routes
 app.use("/api/devices", deviceRoutes)
+app.use("/api/auth", authRoutes)
 
 // Health check endpoint
 app.get("/health", (req, res) => {
